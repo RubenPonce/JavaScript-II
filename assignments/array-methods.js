@@ -1,6 +1,6 @@
 // A local community center is holding a fund raising 5k fun run and has invited 50 small businesses to make a small donation on their behalf for some much needed updates to their facilities.  Each business has assigned a representative to attend the event along with a small donation.
 
-// Scroll to the bottom of the list to use some advanced array methods to help the event director gather some information from the businesses.
+// Scroll to the bottom of the list to use some advanced runners methods to help the event director gather some information from the businesses.
 
 const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"cseiler0@wired.com","shirt_size":"2XL","company_name":"Divanoodle","donation":75},
 {"id":2,"first_name":"Whitaker","last_name":"Ierland","email":"wierland1@angelfire.com","shirt_size":"2XL","company_name":"Wordtune","donation":148},
@@ -54,30 +54,38 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 {"id":50,"first_name":"Shell","last_name":"Baine","email":"sbaine1d@intel.com","shirt_size":"M","company_name":"Gabtype","donation":171}];
 
 // ==== Challenge 1: Use .forEach() ====
-// The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
-let fullName = [];
+// The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new runners called fullName. 
+const fullName = [];
+runners.forEach(element=> fullName.push(`${element.first_name} ${element.last_name} `));
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+const allCaps = runners.map(element => element.first_name.toUpperCase());
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
-// The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+// The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an runners named largeShirts that contains information about the runners that have a shirt size of L and log the result
+const largeShirts = runners.filter(element => element.shirt_size === 'L');
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
-// The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+// The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal runners and log the result
+let ticketPriceTotal = runners.reduce((accumulator,element) => element.donation + accumulator, 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
-// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
+// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the runners methods listed above.
 
-// Problem 1
+// Problem 1 The runners that have a last name with the letter M are disqualified because the director hates the letter M. show the runners without the disqualified runners
+let noLetterM = runners.filter(element => element.last_name[0].toUpperCase() !='M');
+console.log(noLetterM);
 
-// Problem 2
+// Problem 2 The race is cancelled due the M's striking against the race, so the runners need to be consulted via email. Collect everyone's email address and consult them about the issue;
+let letThemKnow = runners.map(element=> element.email);
+console.log(letThemKnow);
 
-// Problem 3
+// Problem 3 Due to the strike the race no longer has funding and people have lost their jobs, and consequentially lost weight due to famine. Change everyone's shirt size to extra small.
+const nowLostWeight = runners;
+nowLostWeight.forEach(element => element.shirt_size= 'XS'); 
+console.log(nowLostWeight);

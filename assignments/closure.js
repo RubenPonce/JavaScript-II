@@ -1,14 +1,29 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
+function starbucks(){
+  let coffee= true;
+ function checkCoffee(){
+   return coffee;
+ }
+ return checkCoffee();
+ 
+}
+  console.log(starbucks())
+   
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
 
 // ==== Challenge 2: Create a counter function ====
-const counter = () => {
+const counter = (count) => {
   // Return a function that when invoked increments and returns a counter variable.
+if(count===undefined){
+  count = 0;
 };
+return ++count;
+};
+
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
 // newCounter(); // 2
@@ -18,4 +33,19 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  const counter = {
+    "increment": function(count){
+      if(count===undefined){
+        count = 0;
+      };
+      return ++count;
+    },
+    "decrement": function(count){
+      if(count===undefined){
+        count = 0;
+      };
+      return --count;
+    }
+  }
+return counter;
 };
